@@ -14,7 +14,7 @@ on:
 # Run the following jobs in this workflow
 jobs:
   # Run pre-commit checks to ensure commits & code are upto spec
-  pre-commit-check-&-build:
+  pre-commit-checks-and-build:
     # job runs on a unbuntu virtual machine
     runs-on: ubuntu-latest
     steps:
