@@ -7,18 +7,37 @@ on:
     branches:
       - template
       - super-template
-  # On push commits for the 
+  # On push commits for the
   push:
     branches:
       - template
 # Run the following jobs in this workflow
 jobs:
+  # Run pre-commit checks to ensure commits & code are upto spec
+  pre-commit-check-&-build:
+    # job runs on a unbuntu virtual machine
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+      - name: Install pre-commit dependencies
+        run: |
+          go install golang.org/x/tools/cmd/goimports@latest
+          go install golang.org/x/lint/golint@latest
+          go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+      - uses: pre-commit/action@v3.0.0
+      - name: Build
+        run:  go build ./...
   # Code linting & formatting
   # Ensure the code is linted and formatted correctly
   golangci-lint:
     # job runs on a unbuntu virtual machine
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       # github action to checkout the code from the repository
       - uses: actions/checkout@v3
       # install golang on the vm
