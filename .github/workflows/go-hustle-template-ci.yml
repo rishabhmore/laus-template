@@ -1,0 +1,32 @@
+# The name of the github workflow
+name: Hustle Template CI
+# Trigger the workflow on following actions
+on:
+  # On pull requests for the following branches
+  pull_request:
+    branches:
+      - template
+      - super-template
+  # On push commits for the 
+  push:
+    branches:
+      - template
+# Run the following jobs in this workflow
+jobs:
+  # Code linting & formatting
+  # Ensure the code is linted and formatted correctly
+  golangci-lint:
+    # job runs on a unbuntu virtual machine
+    runs-on: ubuntu-latest
+    steps: 
+      # github action to checkout the code from the repository
+      - uses: actions/checkout@v3
+      # install golang on the vm
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+      # github action for golang linter
+      - uses: golangci/golangci-lint-action@v3.3.1
+        with:
+          args: --timeout=30m
