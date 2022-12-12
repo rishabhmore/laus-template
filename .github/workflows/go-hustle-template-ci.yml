@@ -13,8 +13,9 @@ on:
       - template
 # Run the following jobs in this workflow
 jobs:
-  # Run pre-commit checks to ensure commits & code are upto spec
-  pre-commit-checks-and-build:
+  # Run pre-commit checks
+  # Ensure the code & commits are formatted correctly and upto spec
+  lint-and-build:
     # job runs on a unbuntu virtual machine
     runs-on: ubuntu-latest
     steps:
@@ -32,20 +33,3 @@ jobs:
       - uses: pre-commit/action@v3.0.0
       - name: Build
         run:  go build ./...
-  # Code linting & formatting
-  # Ensure the code is linted and formatted correctly
-  golangci-lint:
-    # job runs on a unbuntu virtual machine
-    runs-on: ubuntu-latest
-    steps:
-      # github action to checkout the code from the repository
-      - uses: actions/checkout@v3
-      # install golang on the vm
-      - name: Install Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: 1.19
-      # github action for golang linter
-      - uses: golangci/golangci-lint-action@v3.3.1
-        with:
-          args: --timeout=30m
