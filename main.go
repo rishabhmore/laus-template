@@ -9,16 +9,22 @@ import (
 )
 
 func main() {
-	// Create a new cli command to greet user
+	// Initialize a cli application
 	app := &cli.App{
-		Name:  "greet",
-		Usage: "fight the loneliness!",
-		Action: func(*cli.Context) error {
-			fmt.Println("Hello friend!")
-			return nil
+		Commands: []*cli.Command{
+			// Create a new cli command to greet user
+			{
+				Name:  "greet",
+				Usage: "fight the loneliness!",
+				Action: func(*cli.Context) error {
+					fmt.Println("Hello friend!")
+					return nil
+				},
+			},
 		},
 	}
 
+	// Run the cli application! Log any errors
 	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)
 	}
