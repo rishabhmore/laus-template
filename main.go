@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
+	"github.com/rishabhmore/go-hustle-template/commands"
 	cli "github.com/urfave/cli/v2"
 )
 
@@ -13,14 +13,7 @@ func main() {
 	app := &cli.App{
 		Commands: []*cli.Command{
 			// Create a new cli command to greet user
-			{
-				Name:  "greet",
-				Usage: "fight the loneliness!",
-				Action: func(*cli.Context) error {
-					fmt.Println("Hello friend!")
-					return nil
-				},
-			},
+			commands.Greet,
 		},
 	}
 
