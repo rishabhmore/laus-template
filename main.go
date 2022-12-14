@@ -12,7 +12,31 @@ func main() {
 	// Initialize a cli application
 	app := &cli.App{
 		Commands: []*cli.Command{
-			// Create a new cli command to greet user
+			{
+				Name:        "generate",
+				Usage:       "generate command [arguments...]",
+				Description: "Command to generate dbmodels and graphql schemas",
+				Aliases:     []string{"gen"},
+				Subcommands: []*cli.Command{
+					// TODO: add individual sub commands here
+					// models
+					// graphql
+				},
+			},
+			{
+				Name:        "run",
+				Usage:       "run command [arguments...]",
+				Description: "Command to execute project actions such as migrations, server, tests, etc.",
+				Subcommands: []*cli.Command{
+					// TODO: add individual sub commands here
+					// migrations up/down
+					// seeders
+					// run server --reset
+					commands.Server,
+					// tests
+				},
+			},
+			// cli command to greet user
 			commands.Greet,
 		},
 	}

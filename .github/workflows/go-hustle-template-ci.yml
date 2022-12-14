@@ -33,3 +33,24 @@ jobs:
       - uses: pre-commit/action@v3.0.0
       - name: Build
         run:  go build ./...
+  # Run unit tests in the project
+  # and report the coverage to codacy
+  test-and-coverage:
+    # job runs on a unbuntu virtual machine
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+      - name: Run Unit Tests
+        run:  go test ./... -coverprofile=coverage.out
+      - name: Report Coverage to Codacy
+        uses: codacy/codacy-coverage-reporter-action@v1.3.0
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: coverage.out
+          force-coverage-parser: go
+          language: go
