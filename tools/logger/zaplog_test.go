@@ -32,7 +32,7 @@ func TestInfo(t *testing.T) {
 			Info(tt.ctx, tt.msg)
 			assert.Equal(t, 1, observedLogs.Len())
 			log := observedLogs.All()[0]
-			assert.Equal(t, fmt.Sprintf("\nRequest-ID: <nil>\n[%s]\n", tt.msg), log.Message)
+			assert.Equal(t, fmt.Sprintf("\nRequest-ID: <nil>\n%s\n[]\n", tt.msg), log.Message)
 			assert.Equal(t, zapcore.Level(0), log.Level)
 		})
 	}
@@ -59,7 +59,7 @@ func TestDebug(t *testing.T) {
 			Debug(tt.ctx, tt.msg)
 			assert.Equal(t, 1, observedLogs.Len())
 			log := observedLogs.All()[0]
-			assert.Equal(t, fmt.Sprintf("\nRequest-ID: <nil>\n[%s]\n", tt.msg), log.Message)
+			assert.Equal(t, fmt.Sprintf("\nRequest-ID: <nil>\n%s\n[]\n", tt.msg), log.Message)
 			assert.Equal(t, zapcore.Level(-1), log.Level)
 		})
 	}
