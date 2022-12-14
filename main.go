@@ -31,7 +31,8 @@ func main() {
 					// TODO: add individual sub commands here
 					// migrations up/down
 					// seeders
-					// server --reset
+					// run server --reset
+					commands.Server,
 					// tests
 				},
 			},
