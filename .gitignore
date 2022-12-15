@@ -1,6 +1,7 @@
 .idea
 .vscode
 vendor
+main
 coverage.out
 schema.json
 profile.out

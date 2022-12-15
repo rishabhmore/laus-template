@@ -30,6 +30,7 @@ func serverActions(cCtx *cli.Context) error {
 	// }
 
 	// TODO: Load the environment variables and configuration
-	// TODO: Start the echo server
-	return e.StartEchoServer()
+	// Start the echo server
+	e.StartEchoServer()
+	return nil
 }
