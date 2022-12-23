@@ -47,7 +47,7 @@ jobs:
           go-version: 1.19
       - name: Run Unit Tests
         # run:  go test ./... -coverprofile=coverage.out
-      - uses: gwatts/go-coverage-action@v1.2.0
+        uses: gwatts/go-coverage-action@v1.2.0
         id: coverage
         with:
           # Optional coverage threshold
