@@ -45,16 +45,12 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.19
+      - name: Setup Test Eyecandy
+        uses: gotesttools/gotestfmt-action@v2
       - name: Run Unit Tests
-        # run:  go test ./... -coverprofile=coverage.out
-        uses: gwatts/go-coverage-action@v1.2.0
-        id: coverage
-        with:
-          # Optional coverage threshold
-          # use fail-coverage to determine what should happen below this threshold
-          coverage-threshold: 70
-          # Optional Arguments to be provided to the "go test"
-          test-args: '["-coverprofile=coverage.out"]'
+        run: |
+          set -euo pipefail
+          go test -coverprofile=coverage.out -json -v ./... 2>&1 | tee /tmp/gotest.log | gotestfmt
       - name: Report Coverage to Codacy
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
