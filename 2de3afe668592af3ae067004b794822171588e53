@@ -1,0 +1,1 @@
+{"go-coverage-action-fmt":1,"coverage_pct":95.2,"pkg_stats":{"github.com/rishabhmore/go-hustle-template":[0],"github.com/rishabhmore/go-hustle-template/commands":[0],"github.com/rishabhmore/go-hustle-template/endpoints":[100],"github.com/rishabhmore/go-hustle-template/server":[0],"github.com/rishabhmore/go-hustle-template/tools/logger":[95]}}
