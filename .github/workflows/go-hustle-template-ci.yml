@@ -45,8 +45,12 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.19
+      - name: Setup Test Eyecandy
+        uses: gotesttools/gotestfmt-action@v2
       - name: Run Unit Tests
-        run:  go test ./... -coverprofile=coverage.out
+        run: |
+          set -euo pipefail
+          go test -coverprofile=coverage.out -json -v ./... 2>&1 | tee /tmp/gotest.log | gotestfmt
       - name: Report Coverage to Codacy
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
