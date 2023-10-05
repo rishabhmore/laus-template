@@ -3,7 +3,7 @@ package commands
 import (
 	"fmt"
 
-	e "github.com/rishabhmore/go-hustle-template/server"
+	e "github.com/rishabhmore/laus-template/server"
 	cli "github.com/urfave/cli/v2"
 )
 

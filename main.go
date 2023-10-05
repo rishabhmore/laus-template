@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/rishabhmore/go-hustle-template/commands"
+	"github.com/rishabhmore/laus-template/commands"
 	cli "github.com/urfave/cli/v2"
 )
 
