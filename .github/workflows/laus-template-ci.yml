@@ -1,5 +1,5 @@
 # The name of the github workflow
-name: Hustle Template CI
+name: Laus Template CI
 # Trigger the workflow on following actions
 on:
   # On pull requests for the following branches
@@ -24,7 +24,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v3
         with:
-          go-version: 1.19
+          go-version: 1.21.0
       - name: Install pre-commit dependencies
         run: |
           go install golang.org/x/tools/cmd/goimports@latest
@@ -44,7 +44,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v3
         with:
-          go-version: 1.19
+          go-version: 1.21.0
       - name: Setup Test Eyecandy
         uses: gotesttools/gotestfmt-action@v2
       - name: Run Unit Tests
