@@ -9,8 +9,21 @@ import (
 var Greet *cli.Command = &cli.Command{
 	Name:  "greet",
 	Usage: "fight the loneliness!",
-	Action: func(*cli.Context) error {
+	Flags: []cli.Flag{
+		&cli.BoolFlag{
+			Name:    "foe",
+			Aliases: []string{"f"},
+			Usage:   "You dare to greet your foe?",
+		},
+	},
+	Action: executeGreet,
+}
+
+func executeGreet(cliCtx *cli.Context) error {
+	if cliCtx.Bool("foe") {
+		return fmt.Errorf("foes are not welcome here")
+	} else {
 		fmt.Println("Hello friend!")
 		return nil
-	},
+	}
 }

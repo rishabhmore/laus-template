@@ -9,6 +9,13 @@ import (
 )
 
 func main() {
+	// Run the cli application! Log any errors
+	if err := RunCliApp(os.Args); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func RunCliApp(args []string) error {
 	// Initialize a cli application
 	app := &cli.App{
 		Commands: []*cli.Command{
@@ -41,8 +48,5 @@ func main() {
 		},
 	}
 
-	// Run the cli application! Log any errors
-	if err := app.Run(os.Args); err != nil {
-		log.Fatal(err)
-	}
+	return app.Run(args)
 }
